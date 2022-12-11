@@ -37,7 +37,6 @@ export const CAMPSITES = [
         image: reduxWoodsImg,
         elevation: 42,
         featured: true,
-        description:
-            "You'll never want to leave this hidden gem, deep within the lush Redux Woods."
+        description: "You'll never want to leave this hidden gem, deep within the lush Redux Woods."
     }
 ];
