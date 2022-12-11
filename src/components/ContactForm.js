@@ -1,10 +1,16 @@
 import { Field, Form, Formik } from 'formik';
-import { Col, FormGroup, Label } from 'reactstrap';
+import { Button, Col, FormGroup, Label } from 'reactstrap';
 
 const ContactForm = () => {
+    const handleSubmit = (values, { resetForm }) => {
+        console.log('FORM VALUES: ', values);
+        console.log('IN JSON: ', JSON.stringify(values));
+        resetForm();
+    };
+
     return (
         <Formik
-            initialvalues={{
+            initialValues={{
                 firstName: '',
                 lastName: '',
                 phoneNum: '',
@@ -13,6 +19,7 @@ const ContactForm = () => {
                 contactType: 'By Phone',
                 feedback: ''
             }}
+            onSubmit={handleSubmit}
         >
             <Form>
                 <FormGroup row>
@@ -20,7 +27,7 @@ const ContactForm = () => {
                         First Name
                     </Label>
                     <Col md="10">
-                        <Field className="form-control" name="firstName" placeholder="First Name" />{' '}
+                        <Field className="form-control" name="firstName" placeholder="First Name" />
                     </Col>
                 </FormGroup>
                 <FormGroup row>
@@ -36,7 +43,6 @@ const ContactForm = () => {
                         Phone
                     </Label>
                     <Col md="10">
-                        {' '}
                         <Field className="form-control" name="phoneNum" placeholder="Phone" />
                     </Col>
                 </FormGroup>
@@ -45,7 +51,12 @@ const ContactForm = () => {
                         Email
                     </Label>
                     <Col md="10">
-                        <Field className="form-control" name="email" placeholder="Email" />
+                        <Field
+                            className="form-control"
+                            name="email"
+                            placeholder="Email"
+                            type="email"
+                        />
                     </Col>
                 </FormGroup>
                 <FormGroup row>
@@ -66,6 +77,13 @@ const ContactForm = () => {
                     </Label>
                     <Col md="10">
                         <Field className="form-control" name="feedback" as="textarea" rows="12" />
+                    </Col>
+                </FormGroup>
+                <FormGroup row>
+                    <Col md={{ size: 10, offset: 2 }}>
+                        <Button type="submit" color="primary">
+                            Send Feedback
+                        </Button>
                     </Col>
                 </FormGroup>
             </Form>
